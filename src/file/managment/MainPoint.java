@@ -48,11 +48,16 @@ public class MainPoint {
 				System.out.println("Please Make Sure That You Entered Correct Data can't delete not exist file");
 
 			} else {
-				currentFile.delete();
+				if (fileName.equals(currentFile.getName())) {
+					currentFile.delete();
+					FileDto file = new FileDto();
+					file.setName(fileName);
+					llist.remove(file);
+				} else {
+					System.out.println("Please Make Sure That You Entered Correct Data can't delete not exist file");
+
+				}
 			}
-			FileDto file = new FileDto();
-			file.setName(fileName);
-			llist.remove(file);
 		} catch (Exception e) {
 			System.out.println("Please Make Sure That You Entered Correct Data error in Deleting ");
 		}
